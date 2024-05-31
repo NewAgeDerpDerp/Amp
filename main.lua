@@ -1,6 +1,3 @@
----@diagnostic disable: lowercase-global
--- for Lua language server in VSCode: I typically prefer to use lowerCamelCase for variable names, but Lua convention is lowercase_underscores
-
 -- Imports --
 local characters = include("mod.stats")
 -- file loc
@@ -27,15 +24,6 @@ mod:AddCallback(ModCallbacks.MC_POST_RENDER, function()
 end)
 
 -- Utility Functions
-
-local function contains(table, element)
-    for _, value in pairs(table) do
-      if value == element then
-        return true
-      end
-    end
-    return false
-  end
   
 local function length(table)
     local count = 0
@@ -65,17 +53,6 @@ function mod.scheduleForUpdate(foo, delay, callback, noCancelOnNewRoom)
     end
 
     table.insert(mod.delayedFuncs[callback], { Func = foo, Delay = delay, NoCancel = noCancelOnNewRoom })
-end
-
-function mod:cancelScheduledFunctions()
-    for callback, tab in pairs(mod.delayedFuncs) do
-        for i = #tab, 1, -1 do
-            local f = tab[i]
-            if not f.NoCancel then
-                table.remove(tab, i)
-            end
-        end
-    end
 end
 
 ---converts tearRate to the FireDelay formula, then modifies the FireDelay by the request amount, returns Modified FireDelay
@@ -170,7 +147,7 @@ local function CriticalHitCacheCallback(player)
     end
 end
 
----@param player? EntityPlayer
+---@param player EntityPlayer
 local function postPlayerInitLate(player)
     player = player or Isaac.GetPlayer()
     if not (characters:isACharacterDescription(player)) then return end
@@ -244,41 +221,8 @@ end)
 -- Convenience function - check if this player is one of Amp's variants.
 ---@param player EntityPlayer
 local function isAmp(player)
-    if player:GetPlayerType() == Isaac.GetPlayerTypeByName("Amp") or player:GetPlayerType() == Isaac.GetPlayerTypeByName("Amp", true) or player:GetPlayerType() == Isaac.GetPlayerTypeByName("Tarnished Amp") then
-        return true;
-    else
-        return false;
-    end
+    return player:GetPlayerType() == Isaac.GetPlayerTypeByName("Amp") or player:GetPlayerType() == Isaac.GetPlayerTypeByName("Amp", true);
 end
-
--- Tarnished amp was a stupid idea at the time, I have no clue what I was thinking; if you want to enable them uncomment lines 256 through 282
--- local stats_tramp = {
---     HEALTH_RED = 4,
---     FIRERATE_MULTI = 1.15,
---     DAMAGE_FLAT = -1,
---     DAMAGE_MULTI = 0.2,
---     LUCK = -3,
---     TEAR_FLAGS = TearFlags.TEAR_JACOBS
---     -- ITEMS = { CollectibleType.COLLECTIBLE_120_VOLT, CollectibleType.COLLECTIBLE_SPIRIT_SWORD }
--- }
--- local trampid = Isaac.GetPlayerTypeByName("Tarnished Amp");
--- function mod:tarnishedAmp()
---     if not Epiphany or not Epiphany.API then return end
-
---     Epiphany.API.AddCharacter({
---         charName = "Tarnished Amp",
---         charID = trampid,
---         charStats = stats_tramp,
---         costume = "gfx/characters/trAmp.anm2",
---         extraCostume = { Isaac.GetCostumeIdByPath("gfx/characters/trampstem.anm2") },
---         menuGraphics = "gfx/ui/tr/menu_amp.anm2",
---         coopMenuSprite = "gfx/ui/tr/coop_menu_amp.anm2",
---         unlockChecker = function() return true end,
---         floorTutorial = "gfx/ui/tr/tutorial_amp.anm2"
---     })
---     mod:RemoveCallback(ModCallbacks.MC_POST_NEW_LEVEL, mod.tarnishedAmp);
--- end
--- mod:AddCallback(ModCallbacks.MC_POST_NEW_LEVEL, mod.tarnishedAmp);
 
 -- Death sound
 local sfx = SFXManager();
@@ -305,7 +249,6 @@ local function ampHurts(_, entity, amount, flags)
     end
 end
 mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, ampHurts, 1);
-
 
 -- Stage API [Revelations floors, Boiler, etc]
 if StageAPI and StageAPI.Loaded then
@@ -383,22 +326,12 @@ mod:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, AddItems);
 if EID then
     EID:addBirthright(Isaac.GetPlayerTypeByName("Amp"), "Gives 'Ultra-Spicy Spray' as a pocket active, which gives a stat boost for 30 seconds when used");
     EID:addBirthright(Isaac.GetPlayerTypeByName("Amp", true), "Each electronic or electricity-related item Amp carries provides +50% damage and +10% fire rate#Each electronic or electricity-related trinket Amp carries provides +35% damage and +8% fire rate#Multiple copies of the same item or trinket stack the bonus");
-    EID:addBirthright(Isaac.GetPlayerTypeByName("Tarnished Amp"), "Unimplemented");
 
     -- The EID icons are completely fecked at the moment and I don't know how to fix them so they're just not gonna get loaded for now
-    -- local AmpEIDIcon = Sprite();
-    -- local TAmpEIDIcon = Sprite();
-    -- local TRAmpEIDIcon = Sprite();
-    -- AmpEIDIcon:Load("../content/gfx/coop menu.anm2", true);
-    -- TAmpEIDIcon:Load("../content/gfx/coop menu alt.anm2", true);
-    -- TRAmpEIDIcon:Load("gfx/ui/tr/coop menu.anm2", true);
-    -- EID:addIcon("Player" .. Isaac.GetPlayerTypeByName("Amp"), "Amp", 0, 16, 16, 0, 0, AmpEIDIcon);
-    -- EID:addIcon("Player" .. Isaac.GetPlayerTypeByName("Amp", true), "Amp", 0, 16, 16, 0, 0, TAmpEIDIcon);
-    -- EID:addIcon("Player" .. Isaac.GetPlayerTypeByName("Tarnished Amp"), "Tarnished Amp", 0, 16, 16, 0, 0, TRAmpEIDIcon);
 
+    -- USS
     EID:addCollectible(Isaac.GetItemIdByName("Ultra-Spicy Spray"), "{{Timer}} Receive for 30 seconds:#↑ 2x Damage multiplier#↑ 2.5x Fire rate multiplier#↑ +0.3 Speed up")
 end
-
 
 -- Normal Amp's birthright [Spicy Spray]
 local items = { -- list of file names in the items folder, so it can go through each one and run their callbacks
@@ -432,6 +365,8 @@ local function ampBirthright(_, player)
     player:SetPocketActiveItem(Isaac.GetItemIdByName("Ultra-Spicy Spray"), ActiveSlot.SLOT_POCKET, true);
 end
 mod:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, ampBirthright)
+
+--------------------------------
 
 -- Array of item IDs for Tainted Amp's electric resonance
 local tAmpBrItems = {
@@ -470,7 +405,7 @@ local tAmpBrItems = {
     Isaac.GetItemIdByName("Printer")
 }
 
--- The same, but trinkets
+-- Ditto for trinkets
 local tAmpBrTrinkets = {
     TrinketType.TRINKET_AAA_BATTERY,
     TrinketType.TRINKET_WATCH_BATTERY,
@@ -487,7 +422,7 @@ local tAmpBrTrinkets = {
 }
 
 -- Tainted Amp birthright math handlers, called whenever their cache is evaluated to update their damage & fire rate accordingly
--- This is a stupid way to do this but it works
+-- There's probably a better way to do this lol
 ---@param player EntityPlayer
 local function tAmpBirthrightDamage(player)
     if not player:GetPlayerType() == Isaac.GetPlayerTypeByName("Amp", true) then return end
@@ -536,7 +471,8 @@ local function tAmpBirthrightFireDelay(player)
     return firerate
 end
 
--- Update Amp's stats for resonance
+-- Update stats for resonance
+---@param _ any
 ---@param player EntityPlayer
 ---@param flag CacheFlag
 local function tAmpBrStatUpdate(_, player, flag)
