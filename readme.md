@@ -1,6 +1,7 @@
 # Amp, a very lost and very confused Pikmin in the Basement.
 
 A mod for *The Binding of Isaac: Repentance*
+
 **REPENTOGON is required for this mod.**
 https://repentogon.com
 
