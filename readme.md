@@ -6,7 +6,7 @@ A mod for *The Binding of Isaac: Repentance*
 https://repentogon.com
 
 ## Manual installation
-Downloading Amp through Steam Workshop is the recommended way to experience Amp.
+Downloading Amp through Steam Workshop is the recommended way to experience them.
 If you wish to install them manually, here's how:
 
 ### Downloading the ZIP:
