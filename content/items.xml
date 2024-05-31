@@ -1,0 +1,3 @@
+<items gfxroot="gfx/Items/" version="1">
+  <active description="Temporary stats up" gfx="spicyspray.png" maxcharges="12" name="Ultra-Spicy Spray" chargetype="active" quality="4" persistent="True"/>
+</items>

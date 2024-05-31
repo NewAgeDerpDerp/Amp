@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+    <name>Amp</name>
+    <directory>amp</directory>
+    <id>3099194880</id>
+    <description>[h1] REPENTOGON is required for this mod to function. [/h1]
+https://repentogon.com
+[h2]Amp, a very lost, and very confused Pikmin in the Basement. [/h2]
+
+[h2] Mod Support: [/h2]
+[list]
+[*]Pog for Good Items
+[*]Ugh for Bad Items
+[*]Unique Co-op Ghosts [Amp has a unique ghost]
+[*]Fiend Folio [costumes]
+[*]Revelation [costumes]
+[*]Epiphany [costumes]
+[*]Community Remix [costumes]
+[/list]
+
+[h3]Amp[/h3]
+Starts with two red hearts, slightly above average speed, and lower than normal damage. They’ve got electrified tears that can really pack a punch against swarms of enemies, and they have so much electricity built up in them that even just being near things will electrocute them!
+
+[h3]Tainted Amp[/h3]
+[i]Amp's lost soul, doomed to forever roam the basement.[/i]
+Starts with 3 soul hearts, as well as flight and spectral, but even lower damage, but they come with with Technology Zero as a third tear modifier!
+
+Thumbnail art drawn by Alex [Twitter / @Jacob2boi]</description>
+    <version>1.8</version>
+    <visibility>Public</visibility>
+    <tag id="Lua"/>
+    <tag id="Player Characters"/>
+</metadata>

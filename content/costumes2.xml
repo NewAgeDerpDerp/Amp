@@ -1,0 +1,5 @@
+<costumes anm2root="gfx/characters/">
+  <costume anm2path="character_001_Amp_stem.anm2" type="none" priority="99" hasSkinAlt="true" id="1"/>
+  <costume anm2path="character_001_Ampsoul_stem.anm2" type="none" priority="99" hasSkinAlt="true" id="2"/>
+  <costume anm2path="trampstem.anm2" type="none" priority="99" hasSkinAlt="true"/>
+</costumes>

@@ -1,0 +1,47 @@
+<sounds root="sounds/">
+    <sound name="AmpDies">
+        <sample weight="1" path="ampdies1.wav" />
+    </sound>
+    <sound name="TAmpDies">
+        <sample weight="1" path="ampdies2.wav" />
+    </sound>
+    <sound name="pikhurt">
+        <sample weight="1" path="hurt1.wav" />
+        <sample weight="1" path="hurt2.wav" />
+        <sample weight="1" path="hurt3.wav" />
+        <sample weight="1" path="hurt4.wav" />
+    </sound>
+    <sound name="piksing">
+        <sample weight="10" path="singing/sing1.wav" />
+        <sample weight="10" path="singing/sing2.wav" />
+        <sample weight="10" path="singing/sing3.wav" />
+        <sample weight="10" path="singing/sing4.wav" />
+        <sample weight="10" path="singing/sing5.wav" />
+        <sample weight="10" path="singing/sing6.wav" />
+        <sample weight="10" path="singing/sing7.wav" />
+        <sample weight="3"  path="singing/sing8.wav" />
+        <sample weight="10" path="singing/sing9.wav" />
+        <sample weight="10" path="singing/sing10.wav" />
+        <sample weight="10" path="singing/sing11.wav" />
+        <sample weight="10" path="singing/sing12.wav" />
+        <sample weight="10" path="singing/sing13.wav" />
+        <sample weight="10" path="singing/sing14.wav" />
+        <sample weight="10" path="singing/sing15.wav" />
+        <sample weight="10" path="singing/sing16.wav" />
+        <sample weight="10" path="singing/sing17.wav" />
+        <sample weight="10" path="singing/sing18.wav" />
+        <sample weight="3"  path="singing/sing19.wav" />
+    </sound>
+    <sound name="uss">
+        <sample weight="1" path="uss.wav" />
+    </sound>
+    <sound name="ussloop">
+        <sample weight="1" path="uss loop.wav" />
+    </sound>
+    <sound name="usson">
+        <sample weight="1" path="amp uss on.wav" />
+    </sound>
+    <sound name="ussoff">
+        <sample weight="1" path="amp uss off.wav" />
+    </sound>
+</sounds>

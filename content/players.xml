@@ -1,0 +1,42 @@
+<!-- Stat construction is still handled in stats.lua like before. -->
+<players root="gfx/characters/costumes/" 
+         portraitroot="gfx/ui/boss/" 
+         nameimageroot="gfx/ui/boss/" 
+         bigportraitroot="gfx/ui/stage/">
+        <!-- Normal Amp -->
+        <player name="Amp"
+        skin="character_001_Amp.png"
+        birthright="Spicy spray"
+        nameimage="playername_16_Amp.png"
+        portrait="playerportrait_14_Amp.png"
+        bigportrait="playerportraitbig_Amp.png"
+        costumeSuffix="amp"
+        skinColor="-1" 
+        heartcontainers="4"
+        redhearts="4"
+        modcostume="1"/>
+
+        <!-- Tainted Amp -->
+        <player name="Amp"
+        skin="character_001_Ampsoul.png"
+        soulhearts="6"
+        birthright="Electric resonance"
+        portrait="playerportrait_14_Ampsoul.png"
+        bigportrait="playerportrait_14_Ampsoul.png"
+        nameimage="playername_16_Amp.png"
+        bSkinParent="Amp"
+        costumeSuffix="amp"
+        skinColor="0"
+        healthtype="1" 
+        modcostume="2"/>
+
+        <!-- Tarnished Amp -->
+        <player name="Tarnished Amp"
+        skin="tarnished_amp.png"
+        hp="4"
+        nameimage="playername_16_Amp.png"
+        portrait="../tr/stage/playerportrait_amp.png"
+        costumeSuffix="amp"
+        skinColor="-1"
+        hidden="true" />
+</players>

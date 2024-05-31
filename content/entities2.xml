@@ -1,0 +1,4 @@
+<entities anm2root="gfx/characters/" version="5">
+  <entity name="TAmp Death" anm2path="tainted_amp.anm2" shieldStrength="0" variant="0" baseHP="0" boss="" champion="0" collisionDamage="1" collisionMass="50" collisionRadius="13" friction="1" numGridCollisionPoints="0" shadowSize="0" stageHP="0" tags="noreroll" id="4095">
+  </entity>
+</entities>
