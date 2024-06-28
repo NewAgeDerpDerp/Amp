@@ -17,6 +17,3 @@ If you wish to install them manually, here's how:
 ### Through git:
 1. cd into your Isaac mods directory in a terminal.
 2. Run `git clone https://github.com/NewAgeDerpDerp/Amp.git` - this will drop them straight into the directory.
-
-### Licensing
-Amp is licensed under GNU GPL v3. License.txt in the root of their directory is the full GPLv3 document.
