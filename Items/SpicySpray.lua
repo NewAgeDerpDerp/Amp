@@ -1,6 +1,5 @@
 -- For a more human-readable version of what's going on here, scroll to the bottom of the file, I have short explanations of my thought process there.
 local ItemLib = include("lib.itemLib")
-local itemRegistry = ItemLib.registries
 local sfx = SFXManager()
 local function TriggerEffect(player) -- Triggers the effect of USS on the player [adding cache flags and stuff]
     local data = player:GetData()
@@ -74,7 +73,7 @@ local function invoke(_, type, rng, player) -- Invokes the effect of the item.
     -- Above: Check if USS is being invoked by Void and abort if it's being used
     if type == Isaac.GetItemIdByName("Ultra-Spicy Spray") then
         local effects = player:GetEffects()
-        effects:AddCollectibleEffect(itemRegistry.Spicy, false, 1)
+        effects:AddCollectibleEffect(Isaac.GetItemIdByName("Ultra-Spicy Spray"), false, 1)
         TriggerEffect(player)
         player:AddActiveCharge(-12, player:GetActiveItemSlot(Isaac.GetItemIdByName("Ultra-Spicy Spray")), false, true,
             false)                                                 -- Workaround for issue with charge not draining on use
