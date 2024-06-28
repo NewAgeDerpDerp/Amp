@@ -357,7 +357,7 @@ end
 -- handle normal Amp's birthright and whether or not we have it
 ---@param player EntityPlayer
 local function ampBirthright(_, player)
-    if not player:GetPlayerType() == Isaac.GetPlayerTypeByName("Amp") then return end -- Amp check
+    if not(player:GetPlayerType() == Isaac.GetPlayerTypeByName("Amp")) then return end -- Amp check
     if player:GetPlayerType() == Isaac.GetPlayerTypeByName("Amp", true) then return end -- hack-fix for tainted amp
     if not player:HasCollectible(CollectibleType.COLLECTIBLE_BIRTHRIGHT, true) then return end -- Birthright check
     if player:GetActiveItemSlot(Isaac.GetItemIdByName("Ultra-Spicy Spray")) == ActiveSlot.SLOT_POCKET then return end -- Pocket USS check
