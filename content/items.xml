@@ -1,3 +1,5 @@
 <items gfxroot="gfx/Items/" version="1">
   <active description="Temporary stats up" gfx="spicyspray.png" maxcharges="12" name="Ultra-Spicy Spray" chargetype="active" quality="4" persistent="True"/>
+  <active description="Delicious... maybe" gfx="nectar.png" maxcharges="4" name="Jar of Nectar" chargetype="active" quality="1" persistent="True"/>
+  <passive description="Ready to pluck" gfx="seedling.png" name="Seedling" quality="2" customtags="revive"/>
 </items>

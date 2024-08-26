@@ -224,6 +224,10 @@ local function isAmp(player)
     return player:GetPlayerType() == Isaac.GetPlayerTypeByName("Amp") or player:GetPlayerType() == Isaac.GetPlayerTypeByName("Amp", true);
 end
 
+local function GetTotalHealth(player)
+    return player:GetHearts() + player:GetSoulHearts() + player:GetBoneHearts()
+end
+
 -- Death sound
 local sfx = SFXManager();
 mod:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, function(_, player)
@@ -311,13 +315,10 @@ mod:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, AmpDeath);
 --- @param player EntityPlayer
 local function AddItems(_, player)
     if isAmp(player) then -- Check to make sure we're Amp
-        if not player:HasCollectible(CollectibleType.COLLECTIBLE_120_VOLT) then
+        if not(player:HasCollectible(CollectibleType.COLLECTIBLE_120_VOLT)) and not(player:IsCoopGhost()) then
             player:AddInnateCollectible(CollectibleType.COLLECTIBLE_120_VOLT, 1);
             player:RemoveCostume(Isaac.GetItemConfig():GetCollectible(CollectibleType.COLLECTIBLE_120_VOLT));
         end
-    end
-    if player:GetPlayerType() == Isaac.GetPlayerTypeByName("Tarnished Amp") then
-        player:AddInnateCollectible(CollectibleType.COLLECTIBLE_SPIRIT_SWORD, 1);
     end
 end
 mod:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, AddItems);
@@ -331,11 +332,13 @@ if EID then
 
     -- USS
     EID:addCollectible(Isaac.GetItemIdByName("Ultra-Spicy Spray"), "{{Timer}} Receive for 30 seconds:#↑ 2x Damage multiplier#↑ 2.5x Fire rate multiplier#↑ +0.3 Speed up")
+    EID:addCollectible(Isaac.GetItemIdByName("Seedling"), "{{PlayerAmp}} When dead, revive as Amp#{{PlayerTAmp}} Tainted Amp simply revives")
 end
 
 -- Normal Amp's birthright [Spicy Spray]
 local items = { -- list of file names in the items folder, so it can go through each one and run their callbacks
-    "SpicySpray"
+    "spray",
+    "seedling"
 }
 
 local function registerCallback(callback, f, opt) -- register a callback function
