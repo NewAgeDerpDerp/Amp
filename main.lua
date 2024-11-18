@@ -20,6 +20,7 @@ mod:AddCallback(ModCallbacks.MC_POST_RENDER, function()
         local f = Font()
         f:Load("resources/font/pftempestasevencondensed.fnt")
         f:DrawString("The REPENTOGON script extender is required for Amp.", 40, 40, KColor(1, 0.5, 0.5, 1))
+        f:DrawString("(If you have the co-op DLC installed, uninstall it!)", 40, 60, KColor(1, 0.5, 0.5, 1))
     end
 end)
 
